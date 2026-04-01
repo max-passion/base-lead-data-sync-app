@@ -1,6 +1,6 @@
 node_modules/
 logs/
 sync.config.json
-processed/
-failed/
+sync-processed/
+sync-failed/
 package-lock.json

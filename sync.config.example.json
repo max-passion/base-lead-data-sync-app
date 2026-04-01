@@ -1,8 +1,8 @@
 {
   "local": {
-    "sourceDir": "D:\\\\sync-source",
-    "processedDir": "D:\\\\sync-processed",
-    "failedDir": "D:\\\\sync-failed"
+    "sourceDir": "../contactout/data/merged",
+    "processedDir": "./sync-processed",
+    "failedDir": "./sync-failed"
   },
   "runtime": {
     "pollIntervalMs": 10000,
@@ -13,7 +13,7 @@
   },
   "ssh": {
     "username": "ubuntu",
-    "privateKeyPath": "~\\\\.ssh\\\\id_ed25519",
+    "privateKeyPath": "~/.ssh/id_ed25519",
     "port": 22,
     "connectTimeoutMs": 15000
   },
