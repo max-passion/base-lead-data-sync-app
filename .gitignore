@@ -3,3 +3,4 @@ logs/
 sync.config.json
 processed/
 failed/
+package-lock.json
