@@ -13,7 +13,7 @@
   },
   "ssh": {
     "username": "ubuntu",
-    "privateKeyPath": "C:\\\\Users\\\\YOUR_USER\\\\.ssh\\\\id_ed25519",
+    "privateKeyPath": "~\\\\.ssh\\\\id_ed25519",
     "port": 22,
     "connectTimeoutMs": 15000
   },

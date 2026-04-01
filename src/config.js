@@ -1,8 +1,21 @@
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
 
 function isPositiveInteger(value) {
   return Number.isInteger(value) && value > 0;
+}
+
+function expandHomePath(targetPath) {
+  if (targetPath === "~") {
+    return os.homedir();
+  }
+
+  if (targetPath.startsWith("~/") || targetPath.startsWith("~\\")) {
+    return path.join(os.homedir(), targetPath.slice(2));
+  }
+
+  return targetPath;
 }
 
 function resolvePath(baseDir, targetPath) {
@@ -10,9 +23,11 @@ function resolvePath(baseDir, targetPath) {
     throw new Error("Expected a non-empty path string.");
   }
 
-  return path.isAbsolute(targetPath)
-    ? path.normalize(targetPath)
-    : path.resolve(baseDir, targetPath);
+  const expandedPath = expandHomePath(targetPath.trim());
+
+  return path.isAbsolute(expandedPath)
+    ? path.normalize(expandedPath)
+    : path.resolve(baseDir, expandedPath);
 }
 
 function validateTarget(target, index) {
@@ -92,7 +107,9 @@ function loadConfig(configPath) {
   }
 
   if (!fs.existsSync(config.ssh.privateKeyPath)) {
-    throw new Error(`SSH private key not found: ${config.ssh.privateKeyPath}`);
+    throw new Error(
+      `SSH private key not found: ${config.ssh.privateKeyPath}. The private key must exist on this Windows computer; only the public key belongs on the VPS.`
+    );
   }
 
   if (!Array.isArray(config.targets) || config.targets.length === 0) {
@@ -105,5 +122,6 @@ function loadConfig(configPath) {
 }
 
 module.exports = {
-  loadConfig
+  loadConfig,
+  resolvePath
 };

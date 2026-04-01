@@ -29,11 +29,12 @@ Before running the app, you need:
 
 1. Copy `sync.config.example.json` to `sync.config.json`.
 2. Fill in your real folder paths, VPS IPs, SSH username, private key path, and remote directories.
-3. Make sure OpenSSH is available on this Windows machine:
+3. You can use `~\\.ssh\\...` for the private key path, and the app will expand `~` to your Windows home folder.
+4. Make sure OpenSSH is available on this Windows machine:
    - `ssh`
    - `scp`
-4. Make sure the SSH key can log in to each VPS without interactive prompts.
-5. Run the app:
+5. Make sure the SSH key can log in to each VPS without interactive prompts.
+6. Run the app:
 
 ```powershell
 npm start
