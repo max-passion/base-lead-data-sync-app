@@ -1,0 +1,32 @@
+{
+  "local": {
+    "sourceDir": "D:\\\\sync-source",
+    "processedDir": "D:\\\\sync-processed",
+    "failedDir": "D:\\\\sync-failed"
+  },
+  "runtime": {
+    "pollIntervalMs": 10000,
+    "stabilityWindowMs": 5000,
+    "strictEvenDistribution": true,
+    "dryRun": false,
+    "maxFilesPerBatch": 100
+  },
+  "ssh": {
+    "username": "ubuntu",
+    "privateKeyPath": "C:\\\\Users\\\\YOUR_USER\\\\.ssh\\\\id_ed25519",
+    "port": 22,
+    "connectTimeoutMs": 15000
+  },
+  "targets": [
+    {
+      "name": "vps-1",
+      "host": "203.0.113.10",
+      "remoteDir": "/var/data/incoming"
+    },
+    {
+      "name": "vps-2",
+      "host": "203.0.113.11",
+      "remoteDir": "/var/data/incoming"
+    }
+  ]
+}
